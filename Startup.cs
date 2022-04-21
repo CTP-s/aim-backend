@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using aim_backend.Extensions;
 
 namespace aim_backend
 {
@@ -33,7 +34,10 @@ namespace aim_backend
                 option.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddScoped<IUserService, UserService>();
+            
+            services.AddApplicationServices(Configuration);
+
+            services.AddMappingServices(Configuration);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
