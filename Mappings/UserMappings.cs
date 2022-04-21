@@ -9,6 +9,7 @@ namespace aim_backend.Mappings
         public UserMappings() 
         {
             CreateMap<User, UserCredentialsDto>();
+            CreateMap<UserCredentialsDto, User>();
         }
     }
 }

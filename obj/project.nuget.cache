@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "uZPF6nHWZlv3xB4CgrE5OwPanQWAA513yd49zTZHDUtMtFuPMvWJeleHqRgxHshtCtHp3PjR+ulVtU5Bl/6nlQ==",
+  "dgSpecHash": "Zw7IZZOC7ba3tfZOb/O940DO9ihpnCpMpmneOztcn8oSm7TeOKnlg61gsb5075ZckyHq+krMwR4ErkJ0S2XcOQ==",
   "success": true,
   "projectFilePath": "D:\\projects\\CS_Semester4_SWE\\aim-backend\\aim-backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Asus\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.data.sqlite.core\\5.0.0\\microsoft.data.sqlite.core.5.0.0.nupkg.sha512",

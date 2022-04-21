@@ -58,3 +58,4 @@ D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\Microsoft.Extensions.D
 D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
 D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
+D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\BCrypt.Net-Next.dll

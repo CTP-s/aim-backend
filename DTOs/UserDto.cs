@@ -3,10 +3,7 @@ using System.ComponentModel.DataAnnotations;
 namespace aim_backend.DTOs
 {
     public class UserCredentialsDto
-    {
-        [Required]
-        public int id { get; set; }
-        
+    {   
         [Required]
         public string firstName { get; set; }
 
@@ -14,9 +11,13 @@ namespace aim_backend.DTOs
         public string lastName { get; set; }
 
         [Required]
+        public string username { get; set; }
+
+        [Required]
         public string email { get; set; }
 
         [Required]
         public string password { get; set; }
+        
     }
 }
