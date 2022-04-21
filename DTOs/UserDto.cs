@@ -18,6 +18,9 @@ namespace aim_backend.DTOs
 
         [Required]
         public string password { get; set; }
+
+        [Required]
+        public string discriminator { get; set; }
         
     }
 }

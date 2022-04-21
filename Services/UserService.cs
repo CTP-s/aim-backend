@@ -20,16 +20,15 @@ namespace aim_backend.Services
 
         }
 
-        public async Task<UserCredentialsDto> GetUser(int id)
+        public async Task<User> GetUser(int id)
         {
             User user = await _context.Users.FindAsync(id);
-            UserCredentialsDto userCredentials = new UserCredentialsDto();
-            
-            return _mapper.Map<UserCredentialsDto>(user);
+            return _mapper.Map<User>(user);
         }
 
         public async Task<IList<User>> GetUserList()
         {
+
             return await _context.Users.ToListAsync();
         }
     }

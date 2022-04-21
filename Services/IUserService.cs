@@ -9,6 +9,6 @@ namespace aim_backend.Services
     {
         Task<IList<User>> GetUserList();
 
-        Task<UserCredentialsDto> GetUser(int id);
+        Task<User> GetUser(int id);
     }
 }

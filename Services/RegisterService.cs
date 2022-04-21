@@ -27,9 +27,21 @@ namespace aim_backend.Services
         {
             if (await userExists(userCredentials.email)) return null;
 
-            var user = _mapper.Map<User>(userCredentials);
-            
+            User user;
+
+            if (userCredentials.discriminator.ToLower() == "student")
+            {
+                user = new Student();
+                user = _mapper.Map<Student>(userCredentials);
+            }
+            else 
+            {
+                user = new Teacher();
+                user = _mapper.Map<Teacher>(userCredentials);
+            }
+
             user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
             return user;
