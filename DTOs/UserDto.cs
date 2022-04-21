@@ -1,21 +1,22 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace aim_backend.Models
+namespace aim_backend.DTOs
 {
-    public class User
+    public class UserCredentialsDto
     {
-        [Key]
+        [Required]
         public int id { get; set; }
-
+        
+        [Required]
         public string firstName { get; set; }
 
+        [Required]
         public string lastName { get; set; }
 
-        public string userName { get; set; }
-
+        [Required]
         public string email { get; set; }
 
-        public string password { get; set; }   
+        [Required]
+        public string password { get; set; }
     }
-
 }
