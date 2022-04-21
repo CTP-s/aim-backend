@@ -18,7 +18,7 @@ namespace aim_backend.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserById(int id)
+        private async Task<IActionResult> GetUserById(int id)
         {
             var user = await _registerService.GetUserById(id);
 
