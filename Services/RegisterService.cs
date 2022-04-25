@@ -25,11 +25,11 @@ namespace aim_backend.Services
 
         public async Task<User> PostUser(UserCredentialsDto userCredentials)
         {
-            if (await userExists(userCredentials.email)) return null;
+            if (await userExists(userCredentials.Email)) return null;
 
             User user;
 
-            if (userCredentials.discriminator.ToLower() == "student")
+            if (userCredentials.Discriminator.ToLower() == "student")
             {
                 user = new Student();
                 user = _mapper.Map<Student>(userCredentials);
@@ -40,7 +40,7 @@ namespace aim_backend.Services
                 user = _mapper.Map<Teacher>(userCredentials);
             }
 
-            user.password = BCrypt.Net.BCrypt.HashPassword(user.password);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
 
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
@@ -49,7 +49,7 @@ namespace aim_backend.Services
 
         private async Task<bool> userExists(string email)
         {
-            return await _context.Users.AnyAsync(user => user.email.ToLower() == email.ToLower());
+            return await _context.Users.AnyAsync(user => user.Email.ToLower() == email.ToLower());
         }
     }
 }

@@ -59,3 +59,10 @@ D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\Microsoft.Extensions.O
 D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\System.Runtime.CompilerServices.Unsafe.dll
 D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\BCrypt.Net-Next.dll
+D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\projects\CS_Semester4_SWE\aim-backend\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
