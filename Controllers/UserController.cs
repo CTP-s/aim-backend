@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace aim_backend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/user")]
     [ApiController]
     public class UserController : ControllerBase
     {

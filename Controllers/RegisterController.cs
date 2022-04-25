@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace aim_backend.Controllers
 {
-    [Route("api/Register")]
+    [Route("api/register")]
     [ApiController]
     public class RegisterController : ControllerBase
     {

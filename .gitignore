@@ -1,3 +1,7 @@
 
 *.db-wal
 aim.db-shm
+bin/Debug/net5.0/aim-backend.dll
+bin/Debug/net5.0/aim-backend.pdb
+*.dll
+obj/Debug/net5.0/aim-backend.pdb
