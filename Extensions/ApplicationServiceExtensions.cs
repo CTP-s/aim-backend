@@ -11,6 +11,7 @@ namespace aim_backend.Extensions
         {
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRegisterService, RegisterService>();
+            services.AddScoped<ILoginService, LoginService>();
 
             return services;
         }

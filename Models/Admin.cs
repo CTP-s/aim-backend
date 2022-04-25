@@ -2,7 +2,7 @@ namespace aim_backend.Models
 {
     public class Admin: User
     {
-        public int facultyId { get; set; }
+        public int FacultyId { get; set; }
 
     }
 }

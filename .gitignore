@@ -5,3 +5,10 @@ bin/Debug/net5.0/aim-backend.dll
 bin/Debug/net5.0/aim-backend.pdb
 *.dll
 obj/Debug/net5.0/aim-backend.pdb
+obj/aim-backend.csproj.nuget.dgspec.json
+*.cache
+*.dll
+*.pdb
+obj/aim-backend.csproj.nuget.dgspec.json
+obj/project.nuget.cache
+obj/project.assets.json

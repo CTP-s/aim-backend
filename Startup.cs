@@ -15,6 +15,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using aim_backend.Extensions;
+using aim_backend.Helpers;
 
 namespace aim_backend
 {
@@ -34,7 +35,8 @@ namespace aim_backend
                 option.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
 
-            
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+
             services.AddApplicationServices(Configuration);
 
             services.AddMappingServices(Configuration);
@@ -61,6 +63,8 @@ namespace aim_backend
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<JwtMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

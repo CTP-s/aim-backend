@@ -12,6 +12,7 @@ namespace aim_backend.Mappings
             CreateMap<UserCredentialsDto, User>();
             CreateMap<UserCredentialsDto, Student>();
             CreateMap<UserCredentialsDto, Teacher>();
+            CreateMap<User, UserLoginResponseDto>();
         }
     }
 }
