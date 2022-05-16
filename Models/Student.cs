@@ -4,7 +4,6 @@ namespace aim_backend.Models
     {
         public int GroupId { get; set; }
 
-        public int OptionalCourseId { get; set; }
-        
+        // public int OptionalCourseId { get; set; }
     }
 }
