@@ -10,7 +10,9 @@ namespace aim_backend.Models
 
         public int yearNumber { get; set; }
 
-        [ForeignKey("studyLineId")]
-        public StudyLine StudyLine { get; set; }
+        // [ForeignKey("studyLineId")]
+        // public StudyLine StudyLine { get; set; }
+
+        public int StudyLineId { get; set; }
     }
 }

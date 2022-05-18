@@ -6,7 +6,7 @@ namespace aim_backend.Services
 {
     public interface IRegisterService
     {
-        Task<User> GetUserById(int id); 
-        Task<User> PostUser(UserCredentialsDto user);    
+        Task<User> GetUserById(int id);
+        Task<User> PostUser(UserCredentialsDto user);
     }
 }

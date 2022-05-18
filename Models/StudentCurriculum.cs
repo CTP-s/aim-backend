@@ -1,16 +1,26 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace aim_backend.Models
 {
     public class StudentCurriculum
     {
-        [ForeignKey("studentId")]
-        public Student Student { get; set; }
+        [Key]
+        public int StudentCurriculumId { get; set; }
 
-        [ForeignKey("curriculumId")]
-        public Curriculum Curriculum { get; set; }
+        // [ForeignKey("studentId")]
+        // public Student Student { get; set; }
+
+        // [ForeignKey("curriculumId")]
+        // public Curriculum Curriculum { get; set; }
         
-        [ForeignKey("optionalId")]
-        public Optional Optional { get; set; }
+        // [ForeignKey("optionalId")]
+        // public OptionalCourse OptionalCourse { get; set; }
+
+        public int StudentId { get; set; }
+
+        public int CurriculumId { get; set; }
+
+        public int OptionalCourseId { get; set; }
     }
 }

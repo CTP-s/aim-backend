@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using aim_backend.Data;
 
 namespace aim_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220518153050_AddMoreDisciplines")]
+    partial class AddMoreDisciplines
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,10 +31,12 @@ namespace aim_backend.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("TeacherId")
+                    b.Property<int?>("teacherId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("CourseId");
+
+                    b.HasIndex("teacherId");
 
                     b.ToTable("Courses");
 
@@ -284,6 +288,15 @@ namespace aim_backend.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasDiscriminator().HasValue("Teacher");
+                });
+
+            modelBuilder.Entity("aim_backend.Models.Course", b =>
+                {
+                    b.HasOne("aim_backend.Models.Teacher", "Teacher")
+                        .WithMany()
+                        .HasForeignKey("teacherId");
+
+                    b.Navigation("Teacher");
                 });
 
             modelBuilder.Entity("aim_backend.Models.Curriculum", b =>

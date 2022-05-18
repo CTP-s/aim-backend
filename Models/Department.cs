@@ -10,7 +10,10 @@ namespace aim_backend.Models
 
         public string DepartmentName { get; set; }
 
-        [ForeignKey("facultyId")]
-        public Faculty Faculty { get; set; }
+        // [ForeignKey("facultyId")]
+        // public Faculty FacultyId { get; set; }
+
+        public int FacultyId { get; set; }
+
     }
 }

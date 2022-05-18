@@ -8,7 +8,9 @@ namespace aim_backend.Models
         [Key]
         public int CurriculumId { get; set; }
 
-        [ForeignKey("yearOfStudyId")]
-        public YearOfStudy YearOfStudy { get; set; }
+        // [ForeignKey("yearOfStudyId")]
+        // public YearOfStudy YearOfStudy { get; set; }
+
+        public int YearOfStudyId { get; set; }
     }
 }

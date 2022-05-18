@@ -31,5 +31,6 @@ namespace aim_backend.Services
 
             return await _context.Users.ToListAsync();
         }
+        
     }
 }

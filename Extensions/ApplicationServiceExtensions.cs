@@ -3,8 +3,8 @@ using aim_backend.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace aim_backend.Extensions 
-{   
+namespace aim_backend.Extensions
+{
     public static class ApplicationServiceExtensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
@@ -12,6 +12,7 @@ namespace aim_backend.Extensions
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRegisterService, RegisterService>();
             services.AddScoped<ILoginService, LoginService>();
+            services.AddScoped<IDisciplineService, DisciplineService>();
 
             return services;
         }

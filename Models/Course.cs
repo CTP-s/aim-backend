@@ -10,7 +10,6 @@ namespace aim_backend.Models
         
         public string CourseName { get; set; }
 
-        [ForeignKey("curriculumId")]
-        public Curriculum Curriculum { get; set; }
+        public int TeacherId { get; set; }
     }
 }
