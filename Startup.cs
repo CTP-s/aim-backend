@@ -31,7 +31,8 @@ namespace aim_backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<DataContext>(option => {
+            services.AddDbContext<DataContext>(option =>
+            {
                 option.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
             });
 
@@ -66,7 +67,7 @@ namespace aim_backend
 
             app.UseMiddleware<JwtMiddleware>();
 
-            app.UseCors(builder => builder.WithOrigins("http://localhost:5001").AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {
