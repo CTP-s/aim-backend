@@ -32,26 +32,36 @@ namespace aim_backend.Services
             regularDisciplines.ForEach(async course =>
             {
                 var lecturer = await _context.Users.Where(user => user.Id == course.TeacherId).FirstOrDefaultAsync();
+
+                var mean = await GetDisciplineMean(course.CourseId);
+
                 disciplines.Add(new DisciplineDTO
                 {
                     CourseId = course.CourseId,
                     CourseName = course.CourseName,
+                    Discriminator = "Regular",
                     LecturerId = lecturer.Id,
                     LecturerFirstName = lecturer.FirstName,
-                    LecturerLastName = lecturer.LastName
+                    LecturerLastName = lecturer.LastName,
+                    DisciplineMean = mean
                 });
             });
 
             optionalDisciplines.ForEach(async course =>
               {
                   var lecturer = await _context.Users.Where(user => user.Id == course.TeacherId).FirstOrDefaultAsync();
+
+                  var mean = await GetDisciplineMean(course.CourseId);
+
                   disciplines.Add(new DisciplineDTO
                   {
                       CourseId = course.CourseId,
                       CourseName = course.CourseName,
+                      Discriminator = "Optional",
                       LecturerId = lecturer.Id,
                       LecturerFirstName = lecturer.FirstName,
-                      LecturerLastName = lecturer.LastName
+                      LecturerLastName = lecturer.LastName,
+                      DisciplineMean = mean
                   });
               });
 
@@ -59,5 +69,35 @@ namespace aim_backend.Services
 
             return disciplines;
         }
+
+        public async Task<DisciplineDTO> SetMaxStudentsOptionalCourse(DisciplineUpdateDTO disciplineUpdateDTO)
+        {
+            var optionalCourse = await _context.OptionalCourses.FindAsync(disciplineUpdateDTO.CourseId);
+
+            if (optionalCourse == null) return null;
+
+            optionalCourse.MaxNumberStudents = disciplineUpdateDTO.MaximumNumberOfStudents;
+
+            _context.OptionalCourses.Update(optionalCourse);
+            await _context.SaveChangesAsync();
+
+            var disciplineDto = _mapper.Map<DisciplineDTO>(optionalCourse);
+
+            return disciplineDto;
+        }
+
+        private async Task<float> GetDisciplineMean(int disciplineId) {
+            float sum = 0, total = 0;
+            await _context.Grades.Where(grade => grade.CourseId == disciplineId).ForEachAsync(grade => {
+                sum = sum + grade.Value;
+                total = total + 1;
+            }
+            );
+
+            if (total == 0) return -1;
+
+           return sum / total;
+        }
+
     }
 }

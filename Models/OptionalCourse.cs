@@ -5,6 +5,6 @@ namespace aim_backend.Models
 {
     public class OptionalCourse : Course
     {
-        public int maxNumberStudents { get; set; }
+        public int MaxNumberStudents { get; set; }
     }
 }

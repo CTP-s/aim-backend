@@ -13,6 +13,7 @@ namespace aim_backend.Mappings
             CreateMap<UserCredentialsDto, Student>();
             CreateMap<UserCredentialsDto, Teacher>();
             CreateMap<User, UserLoginResponseDto>();
+            CreateMap<OptionalCourse, DisciplineDTO>();
         }
     }
 }

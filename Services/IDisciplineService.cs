@@ -7,5 +7,7 @@ namespace aim_backend.Services
     public interface IDisciplineService
     {
         Task<IList<DisciplineDTO>> GetDisciplines();
+
+        Task<DisciplineDTO> SetMaxStudentsOptionalCourse(DisciplineUpdateDTO disciplineDTO);
     }
 }
