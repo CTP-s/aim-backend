@@ -67,7 +67,7 @@ namespace aim_backend
 
             app.UseMiddleware<JwtMiddleware>();
 
-            app.UseCors(builder => builder.WithOrigins("https://localhost:3000").AllowAnyMethod().AllowAnyHeader());
+            app.UseCors(builder => builder.WithOrigins("http://localhost:3000").AllowAnyMethod().AllowAnyHeader());
 
             app.UseEndpoints(endpoints =>
             {
