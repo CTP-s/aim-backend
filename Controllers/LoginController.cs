@@ -23,7 +23,7 @@ namespace aim_backend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login([FromBody]UserLoginDto userLogin)
+        public async Task<IActionResult> Login([FromBody] UserLoginDto userLogin)
         {
             var user = await _loginService.VerifyUserCredentials(userLogin);
 

@@ -6,8 +6,8 @@ namespace aim_backend.Services
 {
     public interface ILoginService
     {
-         Task<User> VerifyUserCredentials(UserLoginDto userLogin);
+        Task<User> VerifyUserCredentials(UserLoginDto userLogin);
 
-         UserLoginResponseDto Login(User user);
+        Task<UserLoginResponseDto> Login(User user);
     }
 }
