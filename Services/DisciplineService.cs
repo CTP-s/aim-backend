@@ -31,7 +31,7 @@ namespace aim_backend.Services
 
             regularDisciplines.ForEach(async course =>
             {
-                var lecturer = await _context.Users.Where(user => user.Id == course.TeacherId).FirstOrDefaultAsync();
+                var lecturer = await _context.Teachers.Where(user => user.Id == course.TeacherId).FirstOrDefaultAsync();
 
                 var mean = await GetDisciplineMean(course.CourseId);
 
@@ -39,6 +39,7 @@ namespace aim_backend.Services
                 {
                     CourseId = course.CourseId,
                     CourseName = course.CourseName,
+                    CourseSemester = course.Semester,
                     Discriminator = "Regular",
                     LecturerId = lecturer.Id,
                     LecturerFirstName = lecturer.FirstName,
@@ -49,7 +50,7 @@ namespace aim_backend.Services
 
             optionalDisciplines.ForEach(async course =>
               {
-                  var lecturer = await _context.Users.Where(user => user.Id == course.TeacherId).FirstOrDefaultAsync();
+                  var lecturer = await _context.Teachers.Where(user => user.Id == course.TeacherId).FirstOrDefaultAsync();
 
                   var mean = await GetDisciplineMean(course.CourseId);
 
@@ -57,6 +58,7 @@ namespace aim_backend.Services
                   {
                       CourseId = course.CourseId,
                       CourseName = course.CourseName,
+                      CourseSemester = course.Semester,
                       Discriminator = "Optional",
                       LecturerId = lecturer.Id,
                       LecturerFirstName = lecturer.FirstName,
@@ -86,9 +88,11 @@ namespace aim_backend.Services
             return disciplineDto;
         }
 
-        private async Task<float> GetDisciplineMean(int disciplineId) {
+        private async Task<float> GetDisciplineMean(int disciplineId)
+        {
             float sum = 0, total = 0;
-            await _context.Grades.Where(grade => grade.CourseId == disciplineId).ForEachAsync(grade => {
+            await _context.Grades.Where(grade => grade.CourseId == disciplineId).ForEachAsync(grade =>
+            {
                 sum = sum + grade.Value;
                 total = total + 1;
             }
@@ -96,7 +100,7 @@ namespace aim_backend.Services
 
             if (total == 0) return -1;
 
-           return sum / total;
+            return sum / total;
         }
 
     }

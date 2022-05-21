@@ -6,6 +6,8 @@ namespace aim_backend.DTOs
 
         public string CourseName { get; set; }
 
+        public int CourseSemester { get; set; }
+
         public string Discriminator { get; set; }
 
         public int LecturerId { get; set; }
