@@ -39,7 +39,7 @@ namespace aim_backend.Services
 
         public async Task<UserLoginResponseDto> Login(User user)
         {
-            string discriminator;
+            string discriminator = "Admin";
 
             var currentUserStudent = await _dataContext.Students.Where(student => student.Id == user.Id).FirstOrDefaultAsync();
             if (currentUserStudent != null)
@@ -52,14 +52,6 @@ namespace aim_backend.Services
             {
                 discriminator = "Teacher";
             }
-
-            var currentUserAdmin = await _dataContext.Admins.Where(teacher => teacher.Id == user.Id).FirstOrDefaultAsync();
-            if (currentUserTeacher != null)
-            {
-                discriminator = "Admin";
-            }
-
-            discriminator = "";
 
             var token = generateJwtToken(user, discriminator);
 
