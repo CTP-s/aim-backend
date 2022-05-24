@@ -9,5 +9,7 @@ namespace aim_backend.Services
         Task<IList<DisciplineDTO>> GetDisciplines();
 
         Task<DisciplineDTO> SetMaxStudentsOptionalCourse(DisciplineUpdateDTO disciplineDTO);
+
+        Task<IList<RegularCourseCurriculumDTO>> GetRegularDisciplinesByCurriculum(int curriculumId);
     }
 }

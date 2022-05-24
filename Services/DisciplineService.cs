@@ -103,5 +103,30 @@ namespace aim_backend.Services
             return sum / total;
         }
 
+
+        public async Task<IList<RegularCourseCurriculumDTO>> GetRegularDisciplinesByCurriculum(int curriculumId)
+        {
+            var regularDisciplines = new List<RegularCourseCurriculumDTO>();
+
+            await _context.RegularCourses.Where(course => course.CurriculumId == curriculumId).ForEachAsync(async course =>
+            {
+                var lecturer = await _context.Teachers.Where(teacher => teacher.Id == course.TeacherId).FirstOrDefaultAsync();
+
+                regularDisciplines.Add(new RegularCourseCurriculumDTO
+                {
+                    CourseId = course.CourseId,
+                    CourseName = course.CourseName,
+                    CourseSemester = course.Semester,
+                    LecturerFirstName = lecturer.FirstName,
+                    LecturerLastName = lecturer.LastName
+                });
+            });
+
+            if (regularDisciplines.Count == 0) return null;
+
+            return regularDisciplines;
+
+        }
+
     }
 }
