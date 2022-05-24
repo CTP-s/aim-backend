@@ -31,7 +31,7 @@ namespace aim_backend.Controllers
             return Ok(disciplines);
         }
 
-        [HttpGet("regular/{id}")]
+        [HttpGet("regular/curriculum/{id}")]
         public async Task<IActionResult> GetRegularDisciplinesByCurriculum(int id)
         {
             var regularDisciplines = await _disciplineService.GetRegularDisciplinesByCurriculum(id);
@@ -41,7 +41,7 @@ namespace aim_backend.Controllers
             return Ok(regularDisciplines);
         }
 
-        [HttpGet("optional/{id}")]
+        [HttpGet("optional/student/{id}")]
         public async Task<IActionResult> GetOptionalDisciplineByStudent(int id)
         {
             var optionalCourse = await _disciplineService.GetOptionalCourseByStudent(id);
@@ -49,6 +49,16 @@ namespace aim_backend.Controllers
             if (optionalCourse == null) return NotFound("No optional course found for the given student.");
 
             return Ok(optionalCourse);
+        }
+
+        [HttpGet("regular/student/{id}")]
+        public async Task<IActionResult> GetRegularDisciplinesByStudentId(int id)
+        {
+            var regularDisciplines = await _disciplineService.GetRegularDisciplinesByStudentId(id);
+
+            if (regularDisciplines == null) return NotFound("No disciplines for current student.");
+
+            return Ok(regularDisciplines);
         }
 
         [HttpPut]
@@ -60,5 +70,7 @@ namespace aim_backend.Controllers
 
             return Ok(uptadedDiscipline);
         }
+
+
     }
 }

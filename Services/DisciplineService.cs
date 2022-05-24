@@ -152,5 +152,15 @@ namespace aim_backend.Services
                 MaxNumberStudents = optionalCourse.MaxNumberStudents
             };
         }
+
+        public async Task<IList<RegularCourseCurriculumDTO>> GetRegularDisciplinesByStudentId(int studentId)
+        {
+            var curriculum = await _context.StudentCurricula.Where(studCurriculum => studCurriculum.StudentId == studentId)
+                .FirstOrDefaultAsync();
+
+            var regularCourses = await GetRegularDisciplinesByCurriculum(curriculum.CurriculumId);
+
+            return regularCourses;
+        }
     }
 }

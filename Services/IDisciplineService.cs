@@ -13,5 +13,7 @@ namespace aim_backend.Services
         Task<IList<RegularCourseCurriculumDTO>> GetRegularDisciplinesByCurriculum(int curriculumId);
 
         Task<OptionalCourseDTO> GetOptionalCourseByStudent(int studentId);
+
+        Task<IList<RegularCourseCurriculumDTO>> GetRegularDisciplinesByStudentId(int studentId);
     }
 }
