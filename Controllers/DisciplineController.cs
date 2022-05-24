@@ -41,6 +41,16 @@ namespace aim_backend.Controllers
             return Ok(regularDisciplines);
         }
 
+        [HttpGet("optional/{id}")]
+        public async Task<IActionResult> GetOptionalDisciplineByStudent(int id)
+        {
+            var optionalCourse = await _disciplineService.GetOptionalCourseByStudent(id);
+
+            if (optionalCourse == null) return NotFound("No optional course found for the given student.");
+
+            return Ok(optionalCourse);
+        }
+
         [HttpPut]
         public async Task<IActionResult> SetMaximumNumberOfStudents(DisciplineUpdateDTO disciplineUpdateDTO)
         {

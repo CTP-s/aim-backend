@@ -128,5 +128,29 @@ namespace aim_backend.Services
 
         }
 
+        public async Task<OptionalCourseDTO> GetOptionalCourseByStudent(int studentId)
+        {
+            var studentCurriculum = await _context.StudentCurricula.Where(studCurriculum => studCurriculum.StudentId == studentId)
+                .FirstOrDefaultAsync();
+
+            if (studentCurriculum == null || studentCurriculum.OptionalCourseId == 0) return null;
+
+            int optionalCourseId = studentCurriculum.OptionalCourseId;
+
+            var optionalCourse = await _context.OptionalCourses.Where(optionalCourse => optionalCourse.CourseId == optionalCourseId)
+                .FirstOrDefaultAsync();
+
+            var lecturer = await _context.Teachers.Where(teacher => teacher.Id == optionalCourse.TeacherId).FirstOrDefaultAsync();
+
+            return new OptionalCourseDTO
+            {
+                CourseId = optionalCourseId,
+                CourseName = optionalCourse.CourseName,
+                CourseSemester = optionalCourse.Semester,
+                LecturerFirstName = lecturer.FirstName,
+                LecturerLastName = lecturer.LastName,
+                MaxNumberStudents = optionalCourse.MaxNumberStudents
+            };
+        }
     }
 }
