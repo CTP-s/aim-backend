@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace aim_backend.Controllers
 {
-    [Route("api/studentinfo")]
+    [Route("api/student")]
     [ApiController]
-    public class StudentController: ControllerBase
+    public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
         public StudentController(IStudentService studentService)
@@ -15,12 +15,12 @@ namespace aim_backend.Controllers
             _studentService = studentService;
         }
 
-        [HttpPost("StudentGrades")]
-        public async Task<IActionResult> GetStudentGrades(GetGradesDto getGradesDto)
+        [HttpPost("grades/{id}")]
+        public async Task<IActionResult> GetStudentGrades(int id)
         {
-            var studentGrades = await _studentService.GetStudentGrades(getGradesDto);
+            var studentGrades = await _studentService.GetStudentGrades(id);
 
-            if (studentGrades == null) 
+            if (studentGrades == null)
             {
                 return NotFound("No grades for given student");
             }

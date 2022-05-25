@@ -169,15 +169,15 @@ namespace aim_backend.Services
 
         // public async Task<IList<DisciplineDTO>> GetDisciplinesByLecturer(int teacherId)
         // {
-        //     // var lecturerDisciplines = new List<DisciplineDTO>();
-        //     // await _context.RegularCourses.Where(course => course.TeacherId == teacherId).ForEachAsync( course => {
-        //     //     lecturerDisciplines.Add(new DisciplineDTO {
-        //     //         CourseId = course.CourseId,
-        //     //         CourseName = course.CourseName,
-        //     //         CourseSemester = course.Semester,
+        //     var lecturerDisciplines = new List<DisciplineDTO>();
+        //     await _context.RegularCourses.Where(course => course.TeacherId == teacherId).ForEachAsync( course => {
+        //         lecturerDisciplines.Add(new DisciplineDTO {
+        //             CourseId = course.CourseId,
+        //             CourseName = course.CourseName,
+        //             CourseSemester = course.Semester,
 
-        //     //     });
-        //     // });
+        //         });
+        //     });
 
         // }
     }
