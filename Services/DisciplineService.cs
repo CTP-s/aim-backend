@@ -158,9 +158,27 @@ namespace aim_backend.Services
             var curriculum = await _context.StudentCurricula.Where(studCurriculum => studCurriculum.StudentId == studentId)
                 .FirstOrDefaultAsync();
 
+            if (curriculum == null) return null;
+
             var regularCourses = await GetRegularDisciplinesByCurriculum(curriculum.CurriculumId);
+
+            if (regularCourses == null) return null;
 
             return regularCourses;
         }
+
+        // public async Task<IList<DisciplineDTO>> GetDisciplinesByLecturer(int teacherId)
+        // {
+        //     // var lecturerDisciplines = new List<DisciplineDTO>();
+        //     // await _context.RegularCourses.Where(course => course.TeacherId == teacherId).ForEachAsync( course => {
+        //     //     lecturerDisciplines.Add(new DisciplineDTO {
+        //     //         CourseId = course.CourseId,
+        //     //         CourseName = course.CourseName,
+        //     //         CourseSemester = course.Semester,
+
+        //     //     });
+        //     // });
+
+        // }
     }
 }
