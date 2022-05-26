@@ -56,5 +56,16 @@ namespace aim_backend.Services
 
             return _lecturers;
         }
+
+        public async Task<Grade> PostGrade(GradeDto gradeDto)
+        {
+            var grade = _mapper.Map<Grade>(gradeDto);
+
+            _context.Grades.Add(grade);
+
+            await _context.SaveChangesAsync();
+
+            return grade;
+        }
     }
 }

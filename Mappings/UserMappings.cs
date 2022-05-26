@@ -16,6 +16,8 @@ namespace aim_backend.Mappings
             CreateMap<OptionalCourse, DisciplineDTO>();
             CreateMap<User, StudentDto>();
             CreateMap<StudentDto, User>();
+            CreateMap<Grade, GradeDto>();
+            CreateMap<GradeDto, Grade>();
         }
     }
 }

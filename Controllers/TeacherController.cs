@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using aim_backend.DTOs;
 using aim_backend.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,14 @@ namespace aim_backend.Controllers
             if (lecturers == null) return NotFound("No lecturers available.");
 
             return Ok(lecturers);
+        }
+
+        [HttpPost("grades")]
+        public async Task<IActionResult> PostGrade(GradeDto gradeDto)
+        {
+            var grade = await _teacherService.PostGrade(gradeDto);
+
+            return Ok(grade);
         }
     }
 }

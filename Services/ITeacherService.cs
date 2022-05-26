@@ -8,5 +8,7 @@ namespace aim_backend.Services
     public interface ITeacherService
     {
         Task<IList<LecturerDTO>> GetAllLecturers();
+
+        Task<Grade> PostGrade(GradeDto gradeDto);
     }
 }

@@ -80,7 +80,5 @@ namespace aim_backend.Controllers
 
             return Ok(uptadedDiscipline);
         }
-
-
     }
 }
