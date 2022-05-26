@@ -8,12 +8,6 @@ namespace aim_backend.Models
         [Key]
         public int GradeId { get; set; }
 
-        // [ForeignKey("studentId")]
-        // public Student Student { get; set; }
-
-        // [ForeignKey("courseId")]
-        // public Course Course { get; set; }
-
         public int StudentId { get; set; }
 
         public int CourseId { get; set; }

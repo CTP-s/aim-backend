@@ -18,4 +18,11 @@ namespace aim_backend.DTOs
 
         public int Year { get; set; }
     }
+
+    public class EnrollDto
+    {
+        public int StudentId { get; set; }
+
+        public int YearOfStudyId { get; set; }
+    }
 }

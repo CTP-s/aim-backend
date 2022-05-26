@@ -10,9 +10,6 @@ namespace aim_backend.Models
 
         public string studyLineName { get; set; }
 
-        // [ForeignKey("departmentId")]
-        // public Department Department { get; set; }
-
         public int DepartmentId { get; set; }
 
     }

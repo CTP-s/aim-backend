@@ -17,6 +17,7 @@ namespace aim_backend.Extensions
             services.AddScoped<IFacultyService, FacultyService>();
             services.AddScoped<IStudentService, StudentService>();
             services.AddScoped<ICurriculumService, CurriculumService>();
+            services.AddScoped<IEnrollmentService, EnrollmentService>();
 
             return services;
         }
