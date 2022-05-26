@@ -15,7 +15,7 @@ namespace aim_backend.Controllers
             _studentService = studentService;
         }
 
-        [HttpPost("grades/{id}")]
+        [HttpGet("grades/{id}")]
         public async Task<IActionResult> GetStudentGrades(int id)
         {
             var studentGrades = await _studentService.GetStudentGrades(id);
