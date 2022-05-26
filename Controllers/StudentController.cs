@@ -10,9 +10,12 @@ namespace aim_backend.Controllers
     public class StudentController : ControllerBase
     {
         private readonly IStudentService _studentService;
-        public StudentController(IStudentService studentService)
+        private readonly ICurriculumService _curriculumService;
+
+        public StudentController(IStudentService studentService, ICurriculumService curriculumService)
         {
             _studentService = studentService;
+            _curriculumService = curriculumService;
         }
 
         [HttpGet("grades/{id}")]
@@ -26,6 +29,16 @@ namespace aim_backend.Controllers
             }
 
             return Ok(studentGrades);
+        }
+
+        [HttpGet("course/{id}")]
+        public async Task<IActionResult> GetStudentsByCourse(int id)
+        {
+            var students = await _studentService.GetStudentsByCourse(id);
+
+            if (students == null) return NotFound("No students for the current course.");
+
+            return Ok(students);
         }
 
     }

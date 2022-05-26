@@ -61,7 +61,17 @@ namespace aim_backend.Controllers
             return Ok(regularDisciplines);
         }
 
-        [HttpPut]
+        [HttpGet("lecturer/{id}")]
+        public async Task<IActionResult> GetDisciplinesByLecturerId(int id)
+        {
+            var disciplines = await _disciplineService.GetDisciplinesByLecturer(id);
+
+            if (disciplines == null) return NotFound("No disciplines for current lecturer.");
+
+            return Ok(disciplines);
+        }
+
+        [HttpPut("optional/max")]
         public async Task<IActionResult> SetMaximumNumberOfStudents(DisciplineUpdateDTO disciplineUpdateDTO)
         {
             var uptadedDiscipline = await _disciplineService.SetMaxStudentsOptionalCourse(disciplineUpdateDTO);

@@ -37,6 +37,35 @@ namespace aim_backend.Services
 
             return grades;
         }
+
+        private async Task<int> _getCurriculumByCourse(int courseId)
+        {
+            var course = await _context.RegularCourses.Where(course => course.CourseId == courseId).FirstOrDefaultAsync();
+
+            if (course == null) return -1;
+
+            return course.CurriculumId;
+        }
+
+        public async Task<IList<StudentDto>> GetStudentsByCourse(int courseId)
+        {
+            var curriculumId = await _getCurriculumByCourse(courseId);
+
+            if (curriculumId < 0) return null;
+
+            var students = new List<StudentDto>();
+
+            await _context.StudentCurricula.Where(studCurriculum => studCurriculum.CurriculumId == curriculumId).ForEachAsync(async result =>
+            {
+                var student = await _context.Students.Where(student => student.Id == result.StudentId).FirstOrDefaultAsync();
+                var studentDto = _mapper.Map<StudentDto>(student);
+                students.Add(studentDto);
+            });
+
+            if (students.Count == 0) return null;
+
+            return students;
+        }
     }
 
 }
