@@ -15,6 +15,16 @@ namespace aim_backend.Controllers
             _teacherService = teacherService;
         }
 
+        [HttpGet("info/{id}")]
+        public async Task<IActionResult> GetTeacherInfo(int id)
+        {
+            var teacher = await _teacherService.GetTeacherInfo(id);
+
+            if (teacher == null) return NotFound("Teacher not found.");
+
+            return Ok(teacher);
+        }
+
         [HttpGet("lecturer")]
         public async Task<IActionResult> GetAllLecturers()
         {

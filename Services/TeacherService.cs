@@ -20,6 +20,17 @@ namespace aim_backend.Services
             _mapper = mapper;
 
         }
+        public async Task<TeacherInfoDto> GetTeacherInfo(int id)
+        {
+            var teacher = await _context.Teachers.Where(teacher => teacher.Id == id).FirstOrDefaultAsync();
+
+            if (teacher == null) return null;
+
+            var teacherInfoDto = _mapper.Map<TeacherInfoDto>(teacher);
+
+            return teacherInfoDto;
+        }
+
         public async Task<IList<LecturerDTO>> GetAllLecturers()
         {
             var _lecturersJoin = await _context.Teachers.Join(

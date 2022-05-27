@@ -1,8 +1,8 @@
 namespace aim_backend.DTOs
 {
-    public class StudentInfoDto
+    public class TeacherInfoDto
     {
-        public int StudentId { get; set; }
+        public int TeacherId { get; set; }
 
         public string FirstName { get; set; }
 

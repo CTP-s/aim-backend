@@ -66,6 +66,17 @@ namespace aim_backend.Services
 
             return students;
         }
+
+        public async Task<StudentInfoDto> GetStudentInfo(int id)
+        {
+            var student = await _context.Users.Where(user => user.Id == id).FirstOrDefaultAsync();
+
+            if (student == null) return null;
+
+            var studentInfoDto = _mapper.Map<StudentInfoDto>(student);
+
+            return studentInfoDto;
+        }
     }
 
 }

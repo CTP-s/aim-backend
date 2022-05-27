@@ -20,6 +20,10 @@ namespace aim_backend.Mappings
             CreateMap<GradeDto, Grade>();
             CreateMap<EnrollDto, Enrollment>();
             CreateMap<Enrollment, EnrollDto>();
+            CreateMap<User, StudentInfoDto>();
+            CreateMap<StudentInfoDto, User>();
+            CreateMap<User, TeacherInfoDto>();
+            CreateMap<TeacherInfoDto, User>();
         }
     }
 }

@@ -6,6 +6,8 @@ namespace aim_backend.Services
 {
     public interface IStudentService
     {
+        Task<StudentInfoDto> GetStudentInfo(int id);
+
         Task<IList<GradesDto>> GetStudentGrades(int id);
 
         Task<IList<StudentDto>> GetStudentsByCourse(int courseId);

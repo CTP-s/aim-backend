@@ -18,6 +18,16 @@ namespace aim_backend.Controllers
             _curriculumService = curriculumService;
         }
 
+        [HttpGet("info/{id}")]
+        public async Task<IActionResult> GetStudentInfo(int id)
+        {
+            var studentInfo = await _studentService.GetStudentInfo(id);
+
+            if (studentInfo == null) return NotFound("Could not retrieve user info.");
+
+            return Ok(studentInfo);
+        }
+
         [HttpGet("grades/{id}")]
         public async Task<IActionResult> GetStudentGrades(int id)
         {
