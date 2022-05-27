@@ -78,5 +78,30 @@ namespace aim_backend.Services
 
             return grade;
         }
+
+        public async Task<OptionalCourse> ProposeOptional(OptionalCourseProposedDto optionalCourseProposedDto)
+        {
+            var optionalCourse = _mapper.Map<OptionalCourse>(optionalCourseProposedDto);
+            optionalCourse.Approved = 0;
+
+            _context.OptionalCourses.Add(optionalCourse);
+
+            await _context.SaveChangesAsync();
+
+            return optionalCourse;
+        }
+
+        public async Task<OptionalCourse> ApproveOptional(OptionalCourseApproveDto optionalCourseApproveDto)
+        {
+            var optionalCourse = await _context.OptionalCourses.Where(optionalCourse => optionalCourse.CourseId == optionalCourseApproveDto.CourseId).FirstOrDefaultAsync();
+
+            optionalCourse.Approved = optionalCourseApproveDto.Approved;
+
+            _context.OptionalCourses.Update(optionalCourse);
+
+            await _context.SaveChangesAsync();
+
+            return optionalCourse;
+        }
     }
 }

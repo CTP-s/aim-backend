@@ -10,7 +10,8 @@ namespace aim_backend.Models
         public string CourseName { get; set; }
 
         public int TeacherId { get; set; }
-        
+
         public int Semester { get; set; }
     }
+
 }

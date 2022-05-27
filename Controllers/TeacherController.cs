@@ -42,5 +42,25 @@ namespace aim_backend.Controllers
 
             return Ok(grade);
         }
+
+        [HttpPost("propose-optional")]
+        public async Task<IActionResult> ProposeOptionalCourse(OptionalCourseProposedDto optionalCourseProposedDto)
+        {
+            var optionalCourse = await _teacherService.ProposeOptional(optionalCourseProposedDto);
+
+            if (optionalCourse == null) return BadRequest("Could not process course proposal.");
+
+            return Ok(optionalCourse);
+        }
+
+        [HttpPost("approve-optional")]
+        public async Task<IActionResult> ApproveOptionalCourse(OptionalCourseApproveDto optionalCourseApproveDto)
+        {
+            var optionalCourse = await _teacherService.ApproveOptional(optionalCourseApproveDto);
+
+            if (optionalCourse == null) return BadRequest("Could not process course approval.");
+
+            return Ok(optionalCourse);
+        }
     }
 }
