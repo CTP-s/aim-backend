@@ -50,21 +50,24 @@ namespace aim_backend.Services
 
             optionalDisciplines.ForEach(async course =>
               {
-                  var lecturer = await _context.Teachers.Where(user => user.Id == course.TeacherId).FirstOrDefaultAsync();
-
-                  var mean = await GetDisciplineMean(course.CourseId);
-
-                  disciplines.Add(new DisciplineDTO
+                  if (course.Approved > 0)
                   {
-                      CourseId = course.CourseId,
-                      CourseName = course.CourseName,
-                      CourseSemester = course.Semester,
-                      Discriminator = "Optional",
-                      LecturerId = lecturer.Id,
-                      LecturerFirstName = lecturer.FirstName,
-                      LecturerLastName = lecturer.LastName,
-                      DisciplineMean = mean
-                  });
+                      var lecturer = await _context.Teachers.Where(user => user.Id == course.TeacherId).FirstOrDefaultAsync();
+
+                      var mean = await GetDisciplineMean(course.CourseId);
+
+                      disciplines.Add(new DisciplineDTO
+                      {
+                          CourseId = course.CourseId,
+                          CourseName = course.CourseName,
+                          CourseSemester = course.Semester,
+                          Discriminator = "Optional",
+                          LecturerId = lecturer.Id,
+                          LecturerFirstName = lecturer.FirstName,
+                          LecturerLastName = lecturer.LastName,
+                          DisciplineMean = mean
+                      });
+                  }
               });
 
             if (disciplines.Count == 0) return null;

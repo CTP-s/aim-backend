@@ -57,6 +57,8 @@ namespace aim_backend
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "aim_backend v1"));
+                // app.UseSwaggerUI(c => c.SwaggerEndpoint("api.json", "aim_backend v1"));
+
             }
 
             app.UseHttpsRedirection();
