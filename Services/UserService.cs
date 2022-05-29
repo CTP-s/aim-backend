@@ -47,7 +47,7 @@ namespace aim_backend.Services
             }
 
             user.Email = userUpdateDTO.Email;
-            user.UserName = userUpdateDTO.Username;
+            user.UserName = userUpdateDTO.UserName;
 
             _context.Update(user);
 

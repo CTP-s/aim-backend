@@ -73,7 +73,17 @@ namespace aim_backend.Services
 
             if (student == null) return null;
 
-            var studentInfoDto = _mapper.Map<StudentInfoDto>(student);
+            var studentInfoDto = new StudentInfoDto
+            {
+                StudentId = student.Id,
+                FirstName = student.FirstName,
+                LastName = student.LastName,
+                UserName = student.UserName,
+                Email =student.Email,
+                CNP = student.CNP,
+                Address = student.Address,
+                Hometown = student.Hometown
+            };
 
             return studentInfoDto;
         }
