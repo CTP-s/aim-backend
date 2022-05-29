@@ -12,6 +12,6 @@ namespace aim_backend.DTOs
 
         public string CourseName { get; set; }
 
-        public int CourseSemester { get; set; }
+        public int Semester { get; set; }
     }
 }

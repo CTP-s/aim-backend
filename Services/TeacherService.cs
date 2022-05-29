@@ -44,7 +44,7 @@ namespace aim_backend.Services
                     Lastname = teacher.LastName,
                     CourseId = course.CourseId,
                     CourseName = course.CourseName,
-                    CourseSemester = course.Semester
+                    Semester = course.Semester
                 }
             ).ToListAsync();
 
@@ -59,7 +59,7 @@ namespace aim_backend.Services
                     Lastname = lecturer.Lastname,
                     CourseId = lecturer.CourseId,
                     CourseName = lecturer.CourseName,
-                    CourseSemester = lecturer.CourseSemester
+                    Semester = lecturer.Semester
                 });
             });
 

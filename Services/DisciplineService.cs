@@ -39,7 +39,7 @@ namespace aim_backend.Services
                 {
                     CourseId = course.CourseId,
                     CourseName = course.CourseName,
-                    CourseSemester = course.Semester,
+                    Semester = course.Semester,
                     Discriminator = "Regular",
                     LecturerId = lecturer.Id,
                     LecturerFirstName = lecturer.FirstName,
@@ -60,7 +60,7 @@ namespace aim_backend.Services
                       {
                           CourseId = course.CourseId,
                           CourseName = course.CourseName,
-                          CourseSemester = course.Semester,
+                          Semester = course.Semester,
                           Discriminator = "Optional",
                           LecturerId = lecturer.Id,
                           LecturerFirstName = lecturer.FirstName,
@@ -119,7 +119,7 @@ namespace aim_backend.Services
                 {
                     CourseId = course.CourseId,
                     CourseName = course.CourseName,
-                    CourseSemester = course.Semester,
+                    Semester = course.Semester,
                     LecturerFirstName = lecturer.FirstName,
                     LecturerLastName = lecturer.LastName
                 });
@@ -149,7 +149,7 @@ namespace aim_backend.Services
             {
                 CourseId = optionalCourseId,
                 CourseName = optionalCourse.CourseName,
-                CourseSemester = optionalCourse.Semester,
+                Semester = optionalCourse.Semester,
                 LecturerFirstName = lecturer.FirstName,
                 LecturerLastName = lecturer.LastName,
                 MaxNumberStudents = optionalCourse.MaxNumberStudents
@@ -180,7 +180,7 @@ namespace aim_backend.Services
                 {
                     CourseId = course.CourseId,
                     CourseName = course.CourseName,
-                    CourseSemester = course.Semester
+                    Semester = course.Semester
                 });
             });
 

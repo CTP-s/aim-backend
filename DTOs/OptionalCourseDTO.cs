@@ -6,7 +6,7 @@ namespace aim_backend.DTOs
 
         public string CourseName { get; set; }
 
-        public int CourseSemester { get; set; }
+        public int Semester { get; set; }
 
         public string LecturerFirstName { get; set; }
 
@@ -19,7 +19,7 @@ namespace aim_backend.DTOs
     {
         public string CourseName { get; set; }
 
-        public int CourseSemester { get; set; }
+        public int Semester { get; set; }
 
         public int TeacherId { get; set; }
     }
