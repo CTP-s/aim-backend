@@ -174,13 +174,22 @@ namespace aim_backend.Services
         {
             var disciplines = new List<DisciplineDTO>();
 
-            await _context.Courses.Where(course => course.TeacherId == teacherId).ForEachAsync(course =>
+            var lecturer = await _context.Teachers.Where(lecturer => lecturer.Id == teacherId).FirstOrDefaultAsync();
+
+            await _context.OptionalCourses.Where(course => course.TeacherId == teacherId).ForEachAsync(async course =>
             {
+                var mean = await GetDisciplineMean(course.CourseId);
+
                 disciplines.Add(new DisciplineDTO
                 {
                     CourseId = course.CourseId,
                     CourseName = course.CourseName,
-                    Semester = course.Semester
+                    Semester = course.Semester,
+                    LecturerFirstName = lecturer.FirstName,
+                    LecturerLastName = lecturer.LastName,
+                    DisciplineMean = mean,
+                    Approved = course.Approved
+                    
                 });
             });
 

@@ -20,5 +20,7 @@ namespace aim_backend.DTOs
 
         public int? MaxNumberStudents { get; set; }
 
+        public int? Approved { get; set; }
+
     }
 }
