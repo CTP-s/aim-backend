@@ -63,5 +63,9 @@ namespace aim_backend.DTOs
         public string Address { get; set; }
 
         public string Hometown { get; set; }
+
+        public string Discriminator { get; set; }
+
+        public string? Token { get; set; }
     }
 }

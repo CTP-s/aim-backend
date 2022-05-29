@@ -53,7 +53,7 @@ namespace aim_backend.Services
                 discriminator = "Teacher";
             }
 
-            var token = generateJwtToken(user, discriminator);
+            var token = GenerateJwtToken(user, discriminator);
 
             var userLoginResponse = _mapper.Map<UserLoginResponseDto>(user);
 
@@ -62,7 +62,7 @@ namespace aim_backend.Services
             return userLoginResponse;
         }
 
-        private string generateJwtToken(User user, string discriminator)
+        public string GenerateJwtToken(User user, string discriminator)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);

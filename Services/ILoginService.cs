@@ -9,5 +9,7 @@ namespace aim_backend.Services
         Task<User> VerifyUserCredentials(UserLoginDto userLogin);
 
         Task<UserLoginResponseDto> Login(User user);
+
+        string GenerateJwtToken(User user, string discriminator);
     }
 }

@@ -11,6 +11,6 @@ namespace aim_backend.Services
 
         Task<User> GetUser(int id);
 
-        Task<User> UpdateUserInfo(UserUpdateDTO userUpdateDTO);
+        Task<UserUpdateDTO> UpdateUserInfo(UserUpdateDTO userUpdateDTO);
     }
 }

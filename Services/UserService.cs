@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using aim_backend.Data;
 using aim_backend.DTOs;
@@ -12,11 +13,13 @@ namespace aim_backend.Services
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
+        private readonly ILoginService _tokenUtils;
 
-        public UserService(DataContext context, IMapper mapper)
+        public UserService(DataContext context, IMapper mapper, ILoginService tokenUtils)
         {
             _context = context;
             _mapper = mapper;
+            _tokenUtils = tokenUtils;
 
         }
 
@@ -32,17 +35,24 @@ namespace aim_backend.Services
             return await _context.Users.ToListAsync();
         }
 
-        public async Task<User> UpdateUserInfo(UserUpdateDTO userUpdateDTO)
+        public async Task<UserUpdateDTO> UpdateUserInfo(UserUpdateDTO userUpdateDTO)
         {
             if (await _context.Users.AnyAsync(user => user.Email.ToLower() == userUpdateDTO.Email.ToLower())) return null;
 
-            var user = _mapper.Map<User>(userUpdateDTO);
+            var user = await _context.Users.Where(user => user.Id == userUpdateDTO.Id).FirstOrDefaultAsync();
+
+            user.Email = userUpdateDTO.Email;
+            user.UserName = userUpdateDTO.Username;
 
             _context.Update(user);
 
+            var token = _tokenUtils.GenerateJwtToken(user, userUpdateDTO.Discriminator);
+
+            userUpdateDTO.Token = token;
+
             await _context.SaveChangesAsync();
 
-            return user;
+            return userUpdateDTO;
         }
     }
 }
