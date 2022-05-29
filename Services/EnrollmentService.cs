@@ -1,8 +1,10 @@
+using System.Linq;
 using System.Threading.Tasks;
 using aim_backend.Data;
 using aim_backend.DTOs;
 using aim_backend.Models;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace aim_backend.Services
 {
@@ -21,6 +23,16 @@ namespace aim_backend.Services
             var enrollment = _mapper.Map<Enrollment>(enrollDto);
 
             _context.Enrollments.Add(enrollment);
+
+            var curriculum = await _context.Curriculum.Where(curriculum => curriculum.YearOfStudyId == enrollDto.YearOfStudyId).FirstOrDefaultAsync();
+
+            var studentCurriculum = new StudentCurriculum
+            {
+                CurriculumId = curriculum.CurriculumId,
+                StudentId = enrollDto.StudentId
+            };
+
+            _context.StudentCurricula.Add(studentCurriculum);
 
             await _context.SaveChangesAsync();
 
