@@ -37,9 +37,14 @@ namespace aim_backend.Services
 
         public async Task<UserUpdateDTO> UpdateUserInfo(UserUpdateDTO userUpdateDTO)
         {
-            if (await _context.Users.AnyAsync(user => user.Email.ToLower() == userUpdateDTO.Email.ToLower())) return null;
-
             var user = await _context.Users.Where(user => user.Id == userUpdateDTO.Id).FirstOrDefaultAsync();
+            
+            if (user == null) return null;
+
+            if (user.Email != userUpdateDTO.Email)
+            {
+                if (await _context.Users.AnyAsync(user => user.Email.ToLower() == userUpdateDTO.Email.ToLower())) return null;
+            }
 
             user.Email = userUpdateDTO.Email;
             user.UserName = userUpdateDTO.Username;

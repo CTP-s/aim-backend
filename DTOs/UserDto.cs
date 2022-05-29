@@ -66,6 +66,6 @@ namespace aim_backend.DTOs
 
         public string Discriminator { get; set; }
 
-        public string? Token { get; set; }
+        public string Token { get; set; }
     }
 }
