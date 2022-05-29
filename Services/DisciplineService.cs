@@ -188,8 +188,26 @@ namespace aim_backend.Services
                     LecturerFirstName = lecturer.FirstName,
                     LecturerLastName = lecturer.LastName,
                     DisciplineMean = mean,
-                    Approved = course.Approved
-                    
+                    Approved = course.Approved,
+                    Discriminator = "Optional"
+
+                });
+            });
+
+
+            await _context.RegularCourses.Where(course => course.TeacherId == teacherId).ForEachAsync(async course =>
+            {
+                var mean = await GetDisciplineMean(course.CourseId);
+
+                disciplines.Add(new DisciplineDTO
+                {
+                    CourseId = course.CourseId,
+                    CourseName = course.CourseName,
+                    Semester = course.Semester,
+                    LecturerFirstName = lecturer.FirstName,
+                    LecturerLastName = lecturer.LastName,
+                    DisciplineMean = mean,
+                    Discriminator = "Regular"
                 });
             });
 
