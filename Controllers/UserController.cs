@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using aim_backend.DTOs;
 using aim_backend.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,7 +22,7 @@ namespace aim_backend.Controllers
         {
             var user = await _userService.GetUser(id);
 
-            if (user == null) 
+            if (user == null)
             {
                 return NotFound();
             }
@@ -40,6 +41,16 @@ namespace aim_backend.Controllers
             }
 
             return Ok(userList);
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateUserInfo(UserUpdateDTO userUpdateDTO)
+        {
+            var user = await _userService.UpdateUserInfo(userUpdateDTO);
+
+            if (user == null) return BadRequest("Email is already used.");
+
+            return Ok(user);
         }
     }
 }

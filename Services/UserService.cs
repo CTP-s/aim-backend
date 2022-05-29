@@ -12,7 +12,7 @@ namespace aim_backend.Services
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
-        
+
         public UserService(DataContext context, IMapper mapper)
         {
             _context = context;
@@ -31,6 +31,18 @@ namespace aim_backend.Services
 
             return await _context.Users.ToListAsync();
         }
-        
+
+        public async Task<User> UpdateUserInfo(UserUpdateDTO userUpdateDTO)
+        {
+            if (await _context.Users.AnyAsync(user => user.Email.ToLower() == userUpdateDTO.Email.ToLower())) return null;
+
+            var user = _mapper.Map<User>(userUpdateDTO);
+
+            _context.Update(user);
+
+            await _context.SaveChangesAsync();
+
+            return user;
+        }
     }
 }
