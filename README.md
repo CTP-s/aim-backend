@@ -8,3 +8,4 @@
 - [Sequence diagram - student](https://github.com/CTP-s/aim-backend/blob/main/diagrams/SequenceStudentDiagram.jpg)
 - [Sequence diagram - teacher](https://github.com/CTP-s/aim-backend/blob/main/diagrams/SequenceTeacherDiagram.jpg)
 - [Architecture diagram](https://github.com/CTP-s/aim-backend/blob/main/diagrams/ArchitectureDiagram.jpg)
+- [Class diagram)(https://github.com/CTP-s/aim-backend/blob/main/diagrams/ClassDiagram.jpg)
